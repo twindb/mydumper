@@ -20,7 +20,9 @@ build do
 
   configure_args = [
       "--prefix=#{install_dir}/embedded",
-      '--with-pcre'
+      '--disable-gtk-doc',
+      '--enable-static',
+      '--with-pcre=system',
   ]
   configure_cmd = './configure'
   configure_command = configure_args.unshift(configure_cmd).join(' ')

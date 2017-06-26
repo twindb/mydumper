@@ -14,7 +14,12 @@ build do
   env = with_standard_compiler_flags(with_embedded_path)
 
   configure_args = [
-      "--prefix=#{install_dir}/embedded"
+      "--prefix=#{install_dir}/embedded",
+      '--disable-native-java',
+      '--enable-threads',
+      '--disable-csharp',
+      '--disable-java',
+      '--without-git',
   ]
   configure_cmd = './configure'
   configure_command = configure_args.unshift(configure_cmd).join(' ')

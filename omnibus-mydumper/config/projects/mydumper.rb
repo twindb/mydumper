@@ -20,6 +20,9 @@ dependency 'preparation'
 
 # mydumper dependencies/components
 dependency 'mydumper'
+runtime_dependency 'glib2'
+runtime_dependency 'pcre'
+
 
 # Version manifest file
 dependency 'version-manifest'

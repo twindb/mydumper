@@ -14,7 +14,16 @@ build do
   env = with_standard_compiler_flags(with_embedded_path)
 
   configure_args = [
-      "--prefix=#{install_dir}/embedded"
+      "--prefix=#{install_dir}/embedded",
+      '--enable-raw',
+      '--enable-rdev',
+      '--with-slang',
+      '--enable-ddate',
+      '--enable-line',
+      '--disable-silent-rules',
+      '--with-selinux',
+      '--enable-libmount-mount',
+      '--enable-partx',
   ]
   configure_cmd = './configure'
   configure_command = configure_args.unshift(configure_cmd).join(' ')
