@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Perform necessary mydumper removal steps
+# after package is uninstalled.
+#
+
+echo "mydumper has been uninstalled!"
+
+exit 0
