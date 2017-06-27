@@ -13,3 +13,15 @@ services:
 
 script:
   - make package-${PLATFORM}
+
+deploy:
+  provider: packagecloud
+  repository: main
+  username: twindb
+  token:
+    secure: "THfnc8jCVfSdcBM11WXbnDozqnn8HhgSGOqXit0u13nHvlW2C+8oBMyR0dEWVarZBISU+2rBrq2ESrNyWypNcPaA7W3sGObhbjjG2u8/F0I/lbKpQLs5sKVvo2gQadkGmgY2JDPVrp9yBABNpczz6d8fsFblJ56LjY2nPi7j43vLhtQoTdqxOj81fjc6kYCFRYMXLSuvkzcCbxyCen0V86hjE6sda4BlWSxaMAr+SUNXnH2bXD5uJm6YWwMjdpzO/2+mlGyPSB3PEp4qoAwchz5E4P+H1oeOr0WWDVeGcjo3/si3qs3mUKLEdk9/mUpzjzehS0vv9el3lpO/jsWmqZl6JieucMD1jVlZ/2OTB6O5rL50nupFqb0SGO+YgkmS4QgdxjVr+XWf+lnDzGg5al98d+pGNgrU1APmSXNAvMD0pCT6HTtv2SLphEUO2+REwjdA8S+rzs9fGV9I7Jg7IdjZrWRfDYbbCk+knEuoq95aXOS5A0kG1yytA21azLw8hi+qvA3n+bG1DZrQMJjIb5OROX/Ua/OumewqTaaSe9Eoh+AUTrIHJZzo6QMoRLverqITV5GWOzidCXxmitBrKi0+VKzdcjdW+DpcNdA+LTejBjqjDC6+dU1Ealcx3XP3DpznEauRw7tdOg0PgqlGUo8NWmjsalwP8Dm7FWPqPa0="
+  dist: ${DISTRO}/${OS_VERSION}
+  skip_cleanup: true
+  local-dir: .build/
+  on:
+      branch: release-0.9.1
