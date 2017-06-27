@@ -29,7 +29,7 @@ rpm-dependencies:
 
 
 ###### Debian stuff
-deb_packages = build-essential devscripts debhelper libglib2.0-dev libmysqlclient-dev zlib1g-dev libpcre3-dev libssl-dev cmake libmariadbclient-dev
+# deb_packages = build-essential devscripts debhelper libglib2.0-dev libmysqlclient-dev zlib1g-dev libpcre3-dev libssl-dev cmake libmariadbclient-dev
 
 
 build-deb: deb-dependencies deb-changelog deb-src
@@ -37,7 +37,7 @@ build-deb: deb-dependencies deb-changelog deb-src
 
 deb-dependencies:
 	@echo "Checking dependencies"
-	@for p in ${deb_packages}; \
+	deb_packages=$$(grep Build-Depends /mydumper/packages/deb/debian.$$(lsb_release -sc)/control | sed -e 's/Build-Depends://' -e 's/,//g' -e 's/(.*)//'); lsb_release -sc; deb_packages="$${deb_packages} build-essential devscripts debhelper" ; for p in $${deb_packages}; \
     do echo -n "$$p ... " ; \
         if test -z "`dpkg -l | grep $$p`"; \
         then \
@@ -99,11 +99,11 @@ package-debian:
 	@docker run \
         -v $(pwd):/mydumper \
         "${DOCKER_IMAGE}" \
-        bash -c "apt-get update && apt-get -y install make && make -C /mydumper package"
+        bash -c "apt-get update && apt-get -y install make lsb-release && make -C /mydumper package"
 
 
 package-ubuntu:
 	@docker run \
         -v $(pwd):/mydumper \
         "${DOCKER_IMAGE}" \
-        bash -c "apt-get update && apt-get -y install make && make -C /mydumper package"
+        bash -c "apt-get update && apt-get -y install make lsb-release && make -C /mydumper package"
