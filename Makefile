@@ -93,17 +93,17 @@ package-centos:
 	@docker run \
         -v $(pwd):/mydumper_host \
         "${DOCKER_IMAGE}" \
-        bash -c "cp -R /mydumper_host /mydumper && yum clean all && yum -y install make && make -C /mydumper package"
+        bash -c "cp -R /mydumper_host /mydumper && yum clean all && yum -y install make && make -C /mydumper package ; cp -R .build /mydumper_host/build"
 
 package-debian:
 	@docker run \
-        -v $(pwd):/mydumper \
+        -v $(pwd):/mydumper_host  \
         "${DOCKER_IMAGE}" \
-        bash -c "apt-get update && apt-get -y install make lsb-release && make -C /mydumper package"
+        bash -c "cp -R /mydumper_host /mydumper && apt-get update && apt-get -y install make lsb-release && make -C /mydumper package ; cp -R .build /mydumper_host/build"
 
 
 package-ubuntu:
 	@docker run \
-        -v $(pwd):/mydumper \
+        -v $(pwd):/mydumper_host  \
         "${DOCKER_IMAGE}" \
-        bash -c "apt-get update && apt-get -y install make lsb-release && make -C /mydumper package"
+        bash -c "cp -R /mydumper_host /mydumper && apt-get update && apt-get -y install make lsb-release && make -C /mydumper package ; cp -R .build /mydumper_host/build"
