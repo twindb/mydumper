@@ -14,7 +14,10 @@ services:
 script:
   - make package-${PLATFORM}
 
-before_deploy: "ls -la; sudo find build -name *.tar.gz -delete"
+before_deploy:
+  - ls -la
+  - sudo find build  -name "*.gz" -delete
+  - sudo find build  -name "*.dsc" -delete
 
 deploy:
   provider: packagecloud
