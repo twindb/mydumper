@@ -14,7 +14,7 @@ services:
 script:
   - make package-${PLATFORM}
 
-before_deploy: "ls -la"
+before_deploy: "ls -la; find build -name *.tar.gz -delete"
 
 deploy:
   provider: packagecloud
