@@ -93,7 +93,7 @@ package-centos:
 	@docker run \
         -v $(pwd):/mydumper \
         "${DOCKER_IMAGE}" \
-        bash -c "yum clean all && yum -y install make && make -C /mydumper package"
+        bash -c "yum clean all && yum -y install make && sudo make -C /mydumper package"
 
 package-debian:
 	@docker run \
