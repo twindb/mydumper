@@ -87,3 +87,23 @@ docker-start:
         -it \
         "${DOCKER_IMAGE}" \
         bash -l
+
+
+package-centos:
+	@docker run \
+        -v $(pwd):/mydumper \
+        "${DOCKER_IMAGE}" \
+        bash -c "yum clean all && yum -y install make && make -C /mydumper package"
+
+package-debian:
+	@docker run \
+        -v $(pwd):/mydumper \
+        "${DOCKER_IMAGE}" \
+        bash -c "apt-get update && apt-get -y install make && make -C /mydumper package"
+
+
+package-ubuntu:
+	@docker run \
+        -v $(pwd):/mydumper \
+        "${DOCKER_IMAGE}" \
+        bash -c "apt-get update && apt-get -y install make && make -C /mydumper package"
