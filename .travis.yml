@@ -14,7 +14,7 @@ services:
 script:
   - make package-${PLATFORM}
 
-before_deploy: "mv .build build"
+before_deploy: "ls -la"
 
 deploy:
   provider: packagecloud
