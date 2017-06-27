@@ -6,9 +6,10 @@ top_dir = ${pwd}/${build_dir}/rpmbuild
 spec = packages/rpm/mydumper.spec
 
 package:
-	@if ! test -z "`which yum 2>/dev/null`"; then make build-rpm; fi
-	@if ! test -z "`which apt-get 2>/dev/null`"; then make deb-dependencies build-deb; fi
+	if test -f /etc/redhat-release ; then make build-rpm; fi
+	if test -f /etc/debian_version ; then make build-deb; fi
 
+###### PRM stuff
 
 build-rpm: rpmbuild-package rpm-src rpm-dependencies
 	rpmbuild --define '_topdir ${top_dir}' -ba ${spec}
@@ -27,6 +28,39 @@ rpm-dependencies:
 	yum -y install $(shell grep BuildRequires ${spec} | sed 's/BuildRequires://')
 
 
+###### Debian stuff
+deb_packages = build-essential devscripts debhelper
+
+
+build-deb: deb-dependencies deb-src deb-changelog
+
+deb-dependencies:
+	@echo "Checking dependencies"
+	@for p in ${deb_packages}; \
+    do echo -n "$$p ... " ; \
+        if test -z "`dpkg -l | grep $$p`"; \
+        then \
+            echo "$$p ... NOT installed"; \
+            apt-get -y install $$p; \
+        else \
+            echo "installed"; \
+        fi ; \
+    done
+
+deb-src:
+	echo "Preparing source code"
+
+deb-changelog:
+	@echo "Generating changelog"
+	export DEBEMAIL="TwinDB Packager (TwinDB packager key) <packager@twindb.com>" ; \
+	export version=${VERSION}-1 ; \
+	cd packages/deb/ ; \
+	rm -f debian/changelog ; \
+	export distr=`lsb_release -sc` ; \
+	dch -v $$version+$$distr --create --package mydumper --distribution $$distr --force-distribution "New version $$version" ;
+
+
+
 clean:
 	rm -rf "${build_dir}"
 	rm -rf CMakeFiles
@@ -35,7 +69,7 @@ clean:
 	rm -rf config.h
 
 
-DOCKER_IMAGE := "centos:centos7"
+DOCKER_IMAGE ?= "centos:centos7"
 docker-start:
 	@docker run \
         -v $(pwd):/mydumper \
