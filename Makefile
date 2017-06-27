@@ -29,10 +29,11 @@ rpm-dependencies:
 
 
 ###### Debian stuff
-deb_packages = build-essential devscripts debhelper
+deb_packages = build-essential devscripts debhelper libglib2.0-dev libmysqlclient-dev zlib1g-dev libpcre3-dev libssl-dev cmake
 
 
 build-deb: deb-dependencies deb-src deb-changelog
+	cd "${build_dir}/mydumper-${VERSION}" && debuild -us -uc
 
 deb-dependencies:
 	@echo "Checking dependencies"
@@ -49,6 +50,13 @@ deb-dependencies:
 
 deb-src:
 	echo "Preparing source code"
+	rm -rf "${build_dir}"
+	mkdir -p "${build_dir}/mydumper-${VERSION}"
+	cp -R * "${build_dir}/mydumper-${VERSION}"
+	tar zcf "${build_dir}/mydumper_${VERSION}.orig.tar.gz" -C "${build_dir}" "mydumper-${VERSION}"
+	cp -LR packages/deb/debian.`lsb_release -sc`/ "${build_dir}/mydumper-${VERSION}/debian"
+	cp -LR packages/deb/debian/changelog "${build_dir}/mydumper-${VERSION}/debian"
+
 
 deb-changelog:
 	@echo "Generating changelog"

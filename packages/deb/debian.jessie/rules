@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+%:
+	dh $@ --with python2 --with=systemd
+
+override_dh_install:
+	make scripts
+	python setup.py install --install-layout=deb --root=$(CURDIR)/debian/twindb-agent
+	dh_install
+
+override_dh_auto_install:

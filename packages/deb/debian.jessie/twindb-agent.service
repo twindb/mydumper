@@ -1,0 +1,15 @@
+[Unit]
+Description = TwinDB Agent
+Documentation = man:twindb-agent(1) https://twindb.com/
+Requires=mysql.service
+
+[Service]
+User = root
+Type = simple
+PIDFile = /var/run/twindb-agent.pid
+ExecStart = /bin/bash /usr/bin/twindb-agent --start
+
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+

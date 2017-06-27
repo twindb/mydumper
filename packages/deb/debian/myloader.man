@@ -1,0 +1,341 @@
+.TH "myloader" 8 "26 Jun 2017" "" "TwinDB LLC"
+
+.\" Man page generated from reStructuredText.
+.
+.TH MYLOADER USAGE  "" "" ""
+.SH NAME
+Myloader Usage \- 
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH SYNOPSIS
+.sp
+
+.nf
+:program:\(gamyloader\(ga
+.fi
+ 
+.nf
+:option:\(ga\-\-directory <myloader \-\-directory>\(ga
+.fi
+ = /path/to/mydumper/backup [
+.nf
+:ref:\(gaOPTIONS <myloader\-options\-label>\(ga
+.fi
+]
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 7)"
+Unknown interpreted text role "program".
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 7)"
+Unknown interpreted text role "option".
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 7)"
+Unknown interpreted text role "ref".
+.SH DESCRIPTION
+.sp
+
+.nf
+:program:\(gamyloader\(ga
+.fi
+ is a tool used for multi\-threaded restoration of mydumper
+backups.
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 12)"
+Unknown interpreted text role "program".
+.SH OPTIONS
+.sp
+The 
+.nf
+:program:\(gamyloader\(ga
+.fi
+ tool has several available options:
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 20)"
+Unknown interpreted text role "program".
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 22)"
+Unknown directive type "program".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. program:: myloader
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 24)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-help, \-?
+
+   Show help text
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 28)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-host, \-h
+
+   Hostname of MySQL server to connect to (default localhost)
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 32)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-user, \-u
+
+   MySQL username with the correct privileges to execute the restoration
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 36)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-password, \-p
+
+   The corresponding password for the MySQL user
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 40)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-port, \-P
+
+   The port for the MySQL connection.
+
+   .. note::
+
+      For localhost TCP connections use 127.0.0.1 for :option:\(ga\-\-host\(ga.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 48)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-socket, \-S
+
+   The UNIX domain socket file to use for the connection
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 52)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-threads, \-t
+
+   The number of threads to use for restoring data, default is 4
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 56)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-version, \-V
+
+   Show the program version and exit
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 60)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-compress\-protocol, \-C
+
+   Use client protocol compression for connections to the MySQL server
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 64)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-directory, \-d
+
+   The directory of the mydumper backup to restore
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 68)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-database, \-B
+
+   An alternative database to load the dump into
+
+   .. note::
+
+      For use with single database dumps.  When using with multi\-database dumps
+      that have duplicate table names in more than one database it may cause
+      errors.  Alternatively this scenario may give unpredictable results with
+      :option:\(ga\-\-overwrite\-tables\(ga.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 79)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-source\-db, \-s
+
+   Database to restore, useful in combination with \-\-database
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 83)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-queries\-per\-transaction, \-q
+
+   Number of INSERT queries to execute per transaction during restore, default
+   is 1000.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 88)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-overwrite\-tables, \-o
+
+   Drop any existing tables when restoring schemas
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 92)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-enable\-binlog, \-e
+
+   Log the data loading in the MySQL binary log if enabled (off by default)
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/myloader_usage.rst:, line 96)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-verbose, \-v
+
+   The verbosity of messages.  0 = silent, 1 = errors, 2 = warnings, 3 = info.
+   Default is 2.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.\" Generated by docutils manpage writer.
+.

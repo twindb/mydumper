@@ -1,2 +1,6 @@
 [Makefile]
 indent_style = tab
+
+
+[rules]
+indent_style = tab

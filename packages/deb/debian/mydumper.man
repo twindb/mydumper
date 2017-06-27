@@ -1,0 +1,657 @@
+.TH "mydumper" 8 "26 Jun 2017" "" "TwinDB LLC"
+.\" Man page generated from reStructuredText.
+.
+.TH MYDUMPER USAGE  "" "" ""
+.SH NAME
+Mydumper Usage \- 
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH SYNOPSIS
+.sp
+
+.nf
+:program:\(gamydumper\(ga
+.fi
+ [
+.nf
+:ref:\(gaOPTIONS <mydumper\-options\-label>\(ga
+.fi
+]
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 7)"
+Unknown interpreted text role "program".
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 7)"
+Unknown interpreted text role "ref".
+.SH DESCRIPTION
+.sp
+
+.nf
+:program:\(gamydumper\(ga
+.fi
+ is a tool used for backing up MySQL database servers much
+faster than the mysqldump tool distributed with MySQL.  It also has the
+capability to retrieve the binary logs from the remote server at the same time
+as the dump itself.  The advantages of mydumper are:
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 12)"
+Unknown interpreted text role "program".
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+Parallelism (hence, speed) and performance (avoids expensive character set conversion routines, efficient code overall)
+.IP \(bu 2
+Easier to manage output (separate files for tables, dump metadata, etc, easy to view/parse data)
+.IP \(bu 2
+Consistency \- maintains snapshot across all threads, provides accurate master and slave log positions, etc
+.IP \(bu 2
+Manageability \- supports PCRE for specifying database and tables inclusions and exclusions
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH OPTIONS
+.sp
+The 
+.nf
+:program:\(gamydumper\(ga
+.fi
+ tool has several available options:
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 27)"
+Unknown interpreted text role "program".
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 29)"
+Unknown directive type "program".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. program:: mydumper
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 31)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-help, \-?
+
+   Show help text
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 35)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-host, \-h
+
+   Hostname of MySQL server to connect to (default localhost)
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 39)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-user, \-u
+
+   MySQL username with the correct privileges to execute the dump
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 43)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-password, \-p
+
+   The corresponding password for the MySQL user
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 47)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-port, \-P
+
+   The port for the MySQL connection.
+
+   .. note::
+
+      For localhost TCP connections use 127.0.0.1 for :option:\(ga\-\-host\(ga.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 55)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-socket, \-S
+
+   The UNIX domain socket file to use for the connection
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 59)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-database, \-B
+
+   Database to dump
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 63)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-tables\-list, \-T
+
+   A comma separated list of tables to dump
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 67)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-threads, \-t
+
+   The number of threads to use for dumping data, default is 4
+
+   .. note::
+
+      Other threads are used in mydumper, this option does not control these
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 75)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-outputdir, \-o
+
+   Output directory name, default is export\-YYYYMMDD\-HHMMSS
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 79)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-statement\-size, \-s
+
+   The maximum size for an insert statement before breaking into a new
+   statement, default 1,000,000 bytes
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 84)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-rows, \-r
+
+   Split table into chunks of this many rows, default unlimited
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 88)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-compress, \-c
+
+   Compress the output files
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 92)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-compress\-input, \-C
+
+   Use client protocol compression for connections to the MySQL server
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 96)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-build\-empty\-files, \-e
+
+   Create empty dump files if there is no data to dump
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 100)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-regex, \-x
+
+   A regular expression to match against database and table
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 104)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-ignore\-engines, \-i
+
+   Comma separated list of storage engines to ignore
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 108)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-no\-schemas, \-m
+
+   Do not dump schemas with the data
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 112)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-no\-data, \-d
+
+   Do not dump table data
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 116)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-triggers, \-G
+
+   Dump triggers
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 120)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-events, \-E
+
+   Dump events
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 124)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-routines, \-R
+
+   Dump stored procedures and functions
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 128)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-long\-query\-guard, \-l
+
+   Timeout for long query execution in seconds, default 60
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 132)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-kill\-long\-queries, \-K
+
+   Kill long running queries instead of aborting the dump
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 136)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-version, \-V
+
+   Show the program version and exit
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 140)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-verbose, \-v
+
+   The verbosity of messages.  0 = silent, 1 = errors, 2 = warnings, 3 = info.
+   Default is 2.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 145)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-binlogs, \-b
+
+   Get the binlogs from the server as well as the dump files (You need to compile with \-DWITH_BINLOG=ON)
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 149)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option::  \-\-daemon, \-D
+
+   Enable daemon mode
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 153)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-snapshot\-interval, \-I
+
+   Interval between each dump snapshot (in minutes), requires
+   :option:\(ga\-\-daemon\(ga, default 60 (minutes)
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 158)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-logfile, \-L
+
+   A file to log mydumper output to instead of console output.  Useful for
+   daemon mode.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 163)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-no\-locks, \-k
+
+   Do not execute the temporary shared read lock.
+
+   .. warning::
+
+      This will cause inconsistent backups.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 171)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-[skip\-]tz\-utc
+
+   SET TIME_ZONE=\(aq+00:00\(aq at top of dump to allow dumping of TIMESTAMP data
+   when a server has data in different time zones or data is being moved
+   between servers with different time zones, defaults to on use \-\-skip\-tz\-utc
+   to disable.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 178)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-less\-locking
+
+   Minimize locking time on InnoDB tables grabbing a LOCK TABLE ... READ
+   on all non\-innodb tables.
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 183)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-chunk\-filesize \-F
+
+   Split tables into chunks of this output file size. This value is in MB
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 187)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-success\-on\-1146
+
+   Not increment error count and Warning instead of Critical in case of table doesn\(aqt exist
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP "System Message: ERROR/3 (../../../docs/mydumper_usage.rst:, line 191)"
+Unknown directive type "option".
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&.. option:: \-\-use\-savepoints
+
+   Use savepoints to reduce metadata locking issues, needs SUPER privilege
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.\" Generated by docutils manpage writer.
+.

@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+
+
+override_dh_install:
+	@echo "skip dh_install"
