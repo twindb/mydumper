@@ -29,10 +29,10 @@ rpm-dependencies:
 
 
 ###### Debian stuff
-deb_packages = build-essential devscripts debhelper libglib2.0-dev libmysqlclient-dev zlib1g-dev libpcre3-dev libssl-dev cmake
+deb_packages = build-essential devscripts debhelper libglib2.0-dev libmysqlclient-dev zlib1g-dev libpcre3-dev libssl-dev cmake libmariadbclient-dev
 
 
-build-deb: deb-dependencies deb-src deb-changelog
+build-deb: deb-dependencies deb-changelog deb-src
 	cd "${build_dir}/mydumper-${VERSION}" && debuild -us -uc
 
 deb-dependencies:

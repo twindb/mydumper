@@ -4,7 +4,7 @@ Maintainer: TwinDB Packager (TwinDB packager key) <packager@twindb.com>
 Section: database
 Priority: optional
 Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 7.0.50~), libglib2.0-dev, libmysqlclient-dev, zlib1g-dev, libpcre3-dev, libssl-dev
+Build-Depends: debhelper (>= 7.0.50~), libglib2.0-dev, libmariadbclient-dev, zlib1g-dev, libpcre3-dev, libssl-dev
 Vcs-Browser: https://github.com/twindb/mydumper
 
 
